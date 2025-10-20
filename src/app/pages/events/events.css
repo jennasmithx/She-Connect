@@ -1,0 +1,21 @@
+.events-section {
+  background: linear-gradient(135deg, #fff0f5, #ffe3ec);
+  padding: 80px 20px;
+  color: #3e3050;
+  text-align: center;
+}
+
+.event-card {
+  background: #fff0f5;
+  border-radius: 18px;
+  padding: 1.8rem 1.5rem;
+  margin: 1rem auto;
+  max-width: 700px;
+  box-shadow: 0 4px 15px rgba(198, 128, 180, 0.12);
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(198, 128, 180, 0.2);
+}

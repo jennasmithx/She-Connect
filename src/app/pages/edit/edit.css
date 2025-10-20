@@ -1,0 +1,20 @@
+.form-card {
+  background: linear-gradient(145deg, #ffeff6, #fff);
+  border-radius: 20px;
+  box-shadow: 0px 4px 15px rgba(255, 175, 202, 0.8);
+  padding: 2rem;
+}
+
+.btn-custom {
+  background-color: #ffdfe6;
+  color: black;
+  border-radius: 8px;
+}
+
+.btn-custom:hover {
+  background-color: #ffcad4;
+}
+
+.form-input {
+  border-radius: 8px;
+}

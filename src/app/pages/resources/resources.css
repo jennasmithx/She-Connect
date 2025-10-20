@@ -1,0 +1,51 @@
+.resources-section {
+  background: linear-gradient(135deg, #fff0f5, #ffe3ec);
+  padding: 80px 20px;
+  text-align: center;
+  color: #3e3050;
+}
+
+.resource-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.resource-card {
+  background: #fff0f5;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  width: 250px;
+  box-shadow: 0 6px 18px rgba(198, 128, 180, 0.12);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.resource-card h3 {
+  color: #d67fa1;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.resource-card p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.resource-card a {
+  text-decoration: none;
+  color: #fff;
+  background: #d67fa1;
+  padding: 0.6rem 1.3rem;
+  border-radius: 20px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.resource-card a:hover {
+  background: #a75b85;
+  transform: translateY(-3px);
+}

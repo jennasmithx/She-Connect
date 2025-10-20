@@ -1,0 +1,35 @@
+<!-- Register or Sign Up -->
+
+<div class="container mt-5">
+  <div class="row py-5">
+    <div class="col-md-5 mx-auto">
+      <div class="form-card p-5">
+        <h1 class="text-center mb-4">Register</h1>
+        <form (submit)="onRegister(nameInput.value, surnameInput.value, emailInput.value, passwordInput.value); $event.preventDefault()">
+          <div class="mb-3">
+            <label for="name" class="form-label">First Name</label>
+            <input type="text" class="form-control form-input" #nameInput id="name" placeholder="Enter your first name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="surname" class="form-label">Surname</label>
+            <input type="text" class="form-control form-input" #surnameInput id="surname" placeholder="Enter your surname" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control form-input" #emailInput name="email" id="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control form-input" #passwordInput name="password" id="password" placeholder="Enter your password" required>
+          </div>
+
+          <button type="submit" class="btn btn-custom w-100 mt-4">Register</button>
+          <a href="/login" class="d-block mt-3 text-center text-decoration-none link-custom">Already have an account? Sign In</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

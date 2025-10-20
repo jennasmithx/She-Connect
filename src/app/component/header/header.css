@@ -1,0 +1,208 @@
+
+:root {
+  --primary: #d6a4e7; 
+  --secondary: #a37edc; 
+  --accent: #ffffff;
+  --text: #3e3050;
+  --bg-light: #faf6ff;
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Header Section */
+.header-section {
+  background: linear-gradient(145deg, #ffe3ec, #ffedf2); 
+  color: #3e3050;
+  text-align: center;
+  padding: 80px 20px 60px;
+  border-radius: 0px 0px 20px 20px;
+  box-shadow: 0 6px 25px rgba(255, 184, 201, 0.45);
+  position: relative;
+  overflow: hidden;
+  margin-top: 0px;
+  z-index: 1;
+}
+
+.header-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #d67fa1;
+  margin-bottom: 0.5rem;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background-color: #d67fa1;
+  border-radius: 10px;
+  margin: 1rem auto 2rem;
+}
+
+.header-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  opacity: 0.95;
+  margin-bottom: 2.5rem;
+}
+
+.daily-quote {
+  font-style: italic;
+  font-size: 1.15rem;
+  opacity: 0.85;
+  max-width: 700px;
+  margin: 1rem auto 0;
+  color: #d67fa1; 
+}
+
+.header-section::before {
+  width: 200px;
+  height: 200px;
+  background: #ffd6e0;
+  top: -50px;
+  left: -50px;
+}
+
+.header-section::after {
+  width: 300px;
+  height: 300px;
+  background: #ffb6cc;
+  bottom: -100px;
+  right: -80px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 2.2rem;
+  }
+  .header-text {
+    font-size: 1rem;
+  }
+}
+
+/* Feature Cards Section */
+.container.text-center.py-5 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.feature-card {
+    background: linear-gradient(145deg, #fff0f5, #ffe8f2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0px 6px 20px rgba(255, 175, 202, 0.5);
+    border: 1px solid #ffd6e0;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 12px 12px 28px #d67fa1;
+}
+
+.feature-card h3 {
+    color: #d67fa1;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature-card a.btn {
+    background-color: #ffd6e0;
+    color: #3e3050;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.feature-card a.btn:hover {
+    background-color: #ffb6cc;
+    color: #fff;
+}
+
+/* Content Forum */
+.container.bg {
+    background: #fff0f5;
+    padding: 60px 20px;
+    border-radius: 20px;
+    margin-bottom: 80px;
+    box-shadow: 0 6px 25px rgba(255, 184, 201, 0.45);
+    border-radius: 20px;
+    border: 1px solid #ffd6e0;
+}
+
+.container.bg h1 {
+    color: #d67fa1;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(163, 126, 220, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px #ffb6cc;
+}
+
+.card-img-top {
+    border-bottom: 1px solid #ffd6e0;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-body h5 {
+    color: #a37edc;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.card-body p {
+    font-size: 0.95rem;
+    color: #3e3050;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.post-actions button {
+    background: #ffd6e0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.post-actions button:hover {
+    background-color: #d67fa1;
+    color: #fff;
+}
+
+.post-actions span {
+    font-size: 0.9rem;
+    color: #3e3050;
+}

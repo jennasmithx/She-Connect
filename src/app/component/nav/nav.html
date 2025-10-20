@@ -1,0 +1,64 @@
+<!--Navigation-->
+<nav class="navbar navbar-expand-lg py-3 shadow-sm bgnav">
+  <div class="container-fluid">
+    <!-- Logo + Brand -->
+    <div class="d-flex align-items-center">
+      <img src="logo.jpg" alt="logo" height="40" width="40" class="me-2 rounded-circle">
+      <a class="navbar-brand fw-bold fs-4 text-body" routerLink="/">SheConnect</a>
+    </div>
+
+    <!-- Toggle for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item px-2"><a class="nav-link" routerLink="/">Home</a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="/about">About</a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="/login">Login</a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="/register">Sign Up</a></li>
+        
+        <!-- Profile Dropdown -->
+        <li class="nav-item dropdown px-2">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Profile</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+            <li><a class="dropdown-item" routerLink="/edit">Edit</a></li>
+            <li><a class="dropdown-item" routerLink="/addprofile">Add Profile</a></li>
+            <li><a class="dropdown-item" routerLink="/settings">Settings</a></li>
+            <li><a class="dropdown-item text-danger" routerLink="/login">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+   
+
+
+            <!--Navigation Sidebar
+            <nav class="nav flex-column">
+                <a class="nav-link text-body mb-4 mt-5 fs-4" routerLink="#">Dashboard
+                    <span class="d-none d-sm-incline ms-2">Dashboard</span>
+                </a>
+                <a class="nav-link text-body mb-4 fs-4" routerLink="#">Resources
+                    <span class="d-none d-sm-incline ms-2">Resources</span>
+                </a>
+                <a class="nav-link text-body mb-4 fs-4" routerLink="#">Messages
+                    <span class="d-none d-sm-incline ms-2">Messages</span>
+                </a>
+                <a class="nav-link text-body mb-4 fs-4" routerLink="#">Request Mentor
+                    <span class="d-none d-sm-incline ms-2">Request Mentor</span>
+                </a>
+                <a class="nav-link text-body mb-4 fs-4" routerLink="#">Make a Report
+                    <span class="d-none d-sm-incline ms-2">Make a Report</span>
+                </a>   
+                <a class="nav-link text-body mb-4 fs-4 emergency" routerLink="#">EMERGENCY
+                    <span class="d-none d-sm-incline ms-2">Emergency</span>
+                </a>              
+            </nav>
+            -->     
+            

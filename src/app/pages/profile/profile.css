@@ -1,0 +1,42 @@
+.header-section {
+  background: linear-gradient(145deg, #ffeaee, #ffbfcb);
+  color: black;
+  text-align: center;
+  padding: 80px 20px 60px;
+  border-radius: 30px;
+  box-shadow: 6px 6px 25px rgba(255, 192, 207, 0.89);
+  margin-top: 20px;
+}
+
+.profile-card {
+  background: linear-gradient(145deg, #ffeef3, #fff);
+  border-radius: 20px;
+  box-shadow: 0px 6px 20px rgba(255, 175, 202, 0.8);
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 150, 180, 0.6);
+}
+
+.profile-card h3 {
+  color: #a37edc;
+  margin-bottom: 10px;
+}
+
+.profile-card p {
+  margin: 5px 0;
+}
+
+.btn-outline-light {
+  color: black;
+  background-color: #fff3f3;
+  border: 1px solid #ffd4dd;
+}
+
+.btn-outline-light:hover {
+  background-color: #ffe8ec;
+}

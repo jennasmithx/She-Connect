@@ -1,0 +1,42 @@
+<section class="profile-section">
+  <div class="profile-container">
+    <h1 class="section-title">Add a New Profile</h1>
+    <div class="divider"></div>
+
+    <form class="profile-form">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="Enter first name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Surname</label>
+        <input type="text" id="lastName" placeholder="Enter surname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Gmail</label>
+        <input type="email" id="email" placeholder="Enter Gmail address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+      </div>
+
+      <button type="submit" class="btn-add">Add Profile</button>
+    </form>
+
+    <div class="profile-preview">
+      <h2>Visible Profiles</h2>
+      <div class="profile-card">
+        <h3>Jane Doe</h3>
+        <p>janedoe@gmail.com</p>
+        <div class="profile-options">
+          <button>Edit</button>
+          <button><a class="nav-link" routerLink="/edit">Delete</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

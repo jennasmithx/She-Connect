@@ -1,0 +1,46 @@
+.mentors-section {
+  background: linear-gradient(135deg, #ffe3ec, #fff0f5);
+  padding: 80px 20px;
+  color: #3e3050;
+  text-align: center;
+}
+
+.mentor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mentor-card {
+  background: #fff0f5;
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 220px;
+  box-shadow: 0 4px 15px rgba(198, 128, 180, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.mentor-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.mentor-card button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  background: #d67fa1;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.mentor-card button:hover {
+  background: #a75b85;
+}
