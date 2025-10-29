@@ -12,6 +12,7 @@ import { FindmentorComponent } from './pages/findmentor/findmentor';
 import { JoinprogramComponent } from './pages/joinprogram/joinprogram';
 import { ProfileComponent } from './pages/profile/profile';
 import { MypostsComponent } from './pages/myposts/myposts';
+import { ChatComponent } from './pages/chat/chat';
 
 export const routes: Routes = [
 
@@ -74,10 +75,14 @@ export const routes: Routes = [
     path: 'profile',
         component: ProfileComponent
     },
+    
     {
         path: 'myposts',
         component: MypostsComponent
-    }
+    },
+
+    { path: 'chat', component: ChatComponent }
+
 ];
 
 

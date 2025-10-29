@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './joinprogram.css'
 })
 export class JoinprogramComponent {
-
+  openArticle(url: string) {
+  window.open(url, '_blank');
+}
 }

@@ -76,16 +76,14 @@
 }
 
 .post-form button {
-  width: 100%;
-  background: linear-gradient(90deg, #ff89b3, #ffb6c1);
+  background-color: #ffd6e0;
+  color: #3e3050;
   border: none;
-  padding: 10px;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
+  font-weight: 600;
   transition: 0.3s;
 }
 
 .post-form button:hover {
-  background: linear-gradient(90deg, #ff77a9, #ffaec9);
+  background-color: #ffb6cc;
+  color: #fff;
 }

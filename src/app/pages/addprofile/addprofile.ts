@@ -1,18 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-
-interface User {
-  name: string;
-  surname: string;
-  email: string;
-  password: string;
-  homeData?: {
-    usersJoined: number;
-    eventsHosted: number;
-    posts: any[];
-  };
-}
+import { AuthService, User } from '../../services/auth.service';
 
 @Component({
   selector: 'app-addprofile',
@@ -22,64 +10,68 @@ interface User {
 })
 export class AddprofileComponent implements OnInit {
   users: User[] = [];
-
-  // Form fields
-  firstName = '';
-  lastName = '';
-  email = '';
-  password = '';
   errorMsg = '';
 
   constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
-    // Load all users for preview
+    this.loadUsers();
+  }
+
+  loadUsers() {
     this.users = JSON.parse(localStorage.getItem('users') || '[]');
   }
 
-  // Add a profile
-  addProfile() {
-    if (!this.firstName || !this.lastName || !this.email || !this.password) {
+  addProfile(firstName: string, lastName: string, email: string, password: string) {
+    if (!firstName || !lastName || !email || !password) {
       this.errorMsg = 'All fields are required!';
       return;
     }
 
-    const newUser: User = {
-      name: this.firstName,
-      surname: this.lastName,
-      email: this.email,
-      password: this.password,
-      homeData: { usersJoined: 0, eventsHosted: 0, posts: [] }
-    };
+    const loggedInEmail = this.auth.getCurrentUser()?.email;
+    if (!loggedInEmail) {
+      this.errorMsg = 'No logged-in user!';
+      return;
+    }
 
-    // Authorise
     try {
-      this.auth.addProfile(newUser);
-      alert('✅ Profile added!');
-      // Reset form
-      this.firstName = '';
-      this.lastName = '';
-      this.email = '';
-      this.password = '';
+      // Add profile through AuthService
+      this.auth.addProfile({
+        name: firstName,
+        surname: lastName,
+        email,
+        password,
+        parentEmail: loggedInEmail, // link child profile
+        homeData: { usersJoined: 0, eventsHosted: 0, posts: [] }
+      });
+
+      // Reload users from localStorage so visibleProfiles updates
+      this.loadUsers();
+
       this.errorMsg = '';
-      // Refresh user list
-      this.users = JSON.parse(localStorage.getItem('users') || '[]');
+      alert('✅ Profile added!');
     } catch (err: any) {
       this.errorMsg = err.message;
     }
   }
 
   editProfile(user: User) {
-    // Redirect to Edit page
     this.router.navigate(['/edit'], { state: { user } });
   }
 
-  // Delete Profile
   deleteProfile(email: string) {
     if (!confirm('Are you sure you want to delete this profile?')) return;
-    const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
-    const updated = users.filter((u: User) => u.email !== email);
-    localStorage.setItem('users', JSON.stringify(updated));
-    this.users = updated;
+
+    let users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
+    users = users.filter(u => u.email !== email && u.parentEmail !== email);
+    localStorage.setItem('users', JSON.stringify(users));
+    this.loadUsers();
+  }
+
+  // Only show logged-in user + their child profiles
+  get visibleProfiles() {
+    const loggedInEmail = this.auth.getCurrentUser()?.email;
+    if (!loggedInEmail) return [];
+    return this.users.filter(u => u.email === loggedInEmail || u.parentEmail === loggedInEmail);
   }
 }

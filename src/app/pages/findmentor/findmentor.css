@@ -44,3 +44,17 @@
 .mentor-card button:hover {
   background: #a75b85;
 }
+
+.btn {
+  background-color: #ffd6e0;
+  color: #3e3050;
+  border: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #ffb6cc;
+  color: #fff;
+}
+

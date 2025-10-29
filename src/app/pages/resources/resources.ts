@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './resources.html',
   styleUrl: './resources.css'
 })
-export class ResourcesComponent {
 
+export class ResourcesComponent {
+  openArticle(url: string) {
+    window.open(url, '_blank');
+}
 }
