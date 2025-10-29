@@ -1,13 +1,23 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
+  standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './nav.html',
-  styleUrl: './nav.css'
+  styleUrls: ['./nav.css']
 })
 export class NavComponent {
+  constructor(public auth: AuthService, private router: Router) {}
+
+  logout() {
+  this.auth.logout();
+
+  // Redirect to login and prevent back button
+  this.router.navigate(['/login'], { replaceUrl: true });
+}
 
 }

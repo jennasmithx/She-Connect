@@ -5,15 +5,15 @@
     <div class="col-md-5 mx-auto">
       <div class="form-card p-5">
         <h1 class="text-center mb-4">Log In</h1>
-        <form (submit)="onLogin(emailInput.value, passwordInput.value)">
+        <form (submit)="onLogin(email, password); $event.preventDefault()">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control form-input" #emailInput id="email" placeholder="Enter your email" required>
+            <input type="email" class="form-control form-input" #email id="email" placeholder="Enter your email" required>
           </div>
 
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control form-input" #passwordInput id="password" placeholder="Enter your password" required>
+            <input type="password" class="form-control form-input" #password id="password" placeholder="Enter your password" required>
           </div>
 
           <button type="submit" class="btn btn-custom w-100 mt-4">Login</button>

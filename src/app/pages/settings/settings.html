@@ -1,11 +1,39 @@
-<div class="container mt-5">
-  <div class="row py-5">
-    <div class="col-md-6 mx-auto">
-      <div class="form-card p-5 text-center">
-        <h2 class="mb-4">Settings</h2>
-        <p>Manage your account and preferences.</p>
-        <a routerLink="/edit-profile" class="btn btn-custom w-100 mb-3">Edit Profile</a>
-        <button class="btn btn-outline-light w-100" (click)="logout()">Logout</button>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-card">
+
+        <h2 class="text-center mb-4">Settings</h2>
+
+        <!-- Success / Error Message -->
+        <div *ngIf="message" class="alert alert-info text-center">
+          {{ message }}
+        </div>
+
+        <!-- Profile Info -->
+        <div class="mb-4">
+          <h5>Profile Info</h5>
+          <input type="text" class="form-control mb-2" placeholder="Name" [(ngModel)]="user.name">
+          <input type="text" class="form-control mb-2" placeholder="Surname" [(ngModel)]="user.surname">
+          <button class="btn btn-custom w-100" (click)="updateProfile()">Save Changes</button>
+        </div>
+
+        <!-- Change Password -->
+        <div class="mb-4">
+          <h5>Change Password</h5>
+          <input type="password" class="form-control mb-2" placeholder="Current Password" [(ngModel)]="currentPassword">
+          <input type="password" class="form-control mb-2" placeholder="New Password" [(ngModel)]="newPassword">
+          <input type="password" class="form-control mb-2" placeholder="Confirm New Password" [(ngModel)]="confirmPassword">
+          <button class="btn btn-custom w-100" (click)="changePassword()">Change Password</button>
+        </div>
+
+        <!-- Account Actions -->
+        <div class="mb-4">
+          <h5>Account</h5>
+          <button class="btn btn-danger w-100 mb-2" (click)="deleteAccount()">Delete Account</button>
+          <button class="btn btn-secondary w-100" (click)="logout()">Logout</button>
+        </div>
+
       </div>
     </div>
   </div>

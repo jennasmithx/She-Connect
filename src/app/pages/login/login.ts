@@ -1,24 +1,22 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { RouterModule, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   standalone: true,
   selector: 'app-login',
   templateUrl: './login.html',
-  styleUrls: ['./login.css'],
-  imports: [FormsModule, RouterModule] // ✅ standalone imports
+  styleUrls: ['./login.css']
 })
 export class LoginComponent {
+  constructor(private auth: AuthService, private router: Router) {}
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
-
-  onLogin(email: string, password: string) {
-    this.afAuth.signInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.router.navigate(['/profile']); // redirect on success
-      })
-      .catch(err => alert(err.message));
+  onLogin(emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
+    if (this.auth.login(emailInput.value, passwordInput.value)) {
+      alert('✅ Login successful!');
+      this.router.navigate(['/']);
+    } else {
+      alert('❌ Invalid email or password.');
+    }
   }
 }

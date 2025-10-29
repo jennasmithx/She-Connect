@@ -1,21 +1,80 @@
-// src/app/pages/settings/settings.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './settings.html',
   styleUrls: ['./settings.css']
 })
 export class SettingsComponent {
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  user: any;
+  currentPassword = '';
+  newPassword = '';
+  confirmPassword = '';
+  message = '';
+
+  constructor(private auth: AuthService, private router: Router) {
+    this.user = this.auth.getCurrentUser();
+
+    // Redirect to login if not logged in
+    if (!this.user) {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  updateProfile() {
+    if (!this.user.name || !this.user.surname) {
+      this.message = 'Name and surname cannot be empty.';
+      return;
+    }
+
+    this.auth.updateCurrentUserHomeData(this.user.homeData); // keep homeData intact
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
+    this.message = 'Profile updated successfully ✅';
+  }
+
+  changePassword() {
+    if (this.user.password !== this.currentPassword) {
+      this.message = 'Current password is incorrect ❌';
+      return;
+    }
+
+    if (!this.newPassword || this.newPassword !== this.confirmPassword) {
+      this.message = 'New password and confirm password must match ❌';
+      return;
+    }
+
+    this.user.password = this.newPassword;
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const index = users.findIndex((u: any) => u.email === this.user.email);
+    users[index] = this.user;
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
+
+    this.currentPassword = '';
+    this.newPassword = '';
+    this.confirmPassword = '';
+    this.message = 'Password changed successfully ✅';
+  }
+
+  deleteAccount() {
+    if (!confirm('Are you sure you want to delete your account? ❌')) return;
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const filteredUsers = users.filter((u: any) => u.email !== this.user.email);
+    localStorage.setItem('users', JSON.stringify(filteredUsers));
+    localStorage.removeItem('currentUser');
+
+    this.router.navigate(['/login']);
+  }
 
   logout() {
-    this.afAuth.signOut().then(() => this.router.navigate(['/login']));
+    this.auth.logout();
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
 }

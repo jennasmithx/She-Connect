@@ -6,12 +6,12 @@ import { AboutComponent } from './pages/about/about';
 import { AddprofileComponent } from './pages/addprofile/addprofile';
 import { SettingsComponent } from './pages/settings/settings';
 import { ResourcesComponent } from './pages/resources/resources';
-import { EditComponent } from './pages/edit/edit';
 import { EventsComponent } from './pages/events/events';
 import { CreatepostComponent } from './pages/createpost/createpost';
 import { FindmentorComponent } from './pages/findmentor/findmentor';
 import { JoinprogramComponent } from './pages/joinprogram/joinprogram';
 import { ProfileComponent } from './pages/profile/profile';
+import { MypostsComponent } from './pages/myposts/myposts';
 
 export const routes: Routes = [
 
@@ -34,11 +34,6 @@ export const routes: Routes = [
         path: 'about',
         component: AboutComponent
     },
-
-    {
-    path: 'edit',
-        component: EditComponent
-    }, 
 
     {
     path: 'addprofile',
@@ -78,6 +73,10 @@ export const routes: Routes = [
     {
     path: 'profile',
         component: ProfileComponent
+    },
+    {
+        path: 'myposts',
+        component: MypostsComponent
     }
 ];
 

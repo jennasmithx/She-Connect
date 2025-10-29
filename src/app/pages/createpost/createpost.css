@@ -1,0 +1,91 @@
+.create-post {
+  background: #fff0f5;
+  min-height: 100vh;
+}
+
+.post-card {
+  background: white;
+  border: 2px solid #ffc6da;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff9ac1;
+}
+
+.post-input {
+  border-radius: 12px;
+  border: 1.5px solid #ffbcd3;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+.post-input:focus {
+  border-color: #ff82b5;
+  box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.3);
+}
+
+.btn-post {
+  background: linear-gradient(to right, #ff9ac1, #ff77b5);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-post:hover {
+  background: linear-gradient(to right, #ff82b5, #ff6fa0);
+}
+
+.preview img {
+  max-height: 250px;
+  border-radius: 12px;
+}
+
+.create-post-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #ffe6f2;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+  text-align: center;
+}
+
+.create-post-container h2 {
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
+.post-form input[type="file"],
+.post-form textarea {
+  width: 100%;
+  margin: 10px 0;
+  border: 2px solid #f5a6c8;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.post-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.post-form button {
+  width: 100%;
+  background: linear-gradient(90deg, #ff89b3, #ffb6c1);
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.post-form button:hover {
+  background: linear-gradient(90deg, #ff77a9, #ffaec9);
+}

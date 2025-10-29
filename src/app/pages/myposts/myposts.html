@@ -1,0 +1,12 @@
+<div class="posts-container py-5">
+  <h2 class="mb-4 text-center">📝 My Posts</h2>
+  <div *ngIf="posts.length === 0" class="no-posts">No posts yet!</div>
+  
+  <div class="posts-row">
+    <div class="card-post" *ngFor="let post of posts">
+      <p>{{ post.content }}</p>
+      <img *ngIf="post.image" [src]="post.image" alt="Post image">
+      <small>By {{ post.name }} {{ post.surname }} | {{ post.createdAt | date:'short' }}</small>
+    </div>
+  </div>
+</div>

@@ -1,39 +1,28 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { Router, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   standalone: true,
   selector: 'app-register',
   templateUrl: './register.html',
-  styleUrls: ['./register.css'],
-  imports: [
-    FormsModule,
-    RouterModule,
-    AngularFireAuthModule,     
-    AngularFirestoreModule   
-  ]
+  styleUrls: ['./register.css']
 })
 export class RegisterComponent {
-  constructor(
-    private afAuth: AngularFireAuth,
-    private firestore: AngularFirestore,
-    private router: Router
-  ) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
-  onRegister(name: string, surname: string, email: string, password: string) {
-    this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then(cred => {
-        return this.firestore.collection('users').doc(cred.user?.uid).set({
-          name,
-          surname,
-          email,
-          createdAt: new Date()
-        });
-      })
-      .then(() => this.router.navigate(['/profile'])) // redirect after signup
-      .catch(err => alert(err.message));
+  onRegister(nameInput: HTMLInputElement, surnameInput: HTMLInputElement, emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
+    try {
+      this.auth.register(
+        nameInput.value,
+        surnameInput.value,
+        emailInput.value,
+        passwordInput.value
+      );
+      alert('✅ Registered successfully!');
+      this.router.navigate(['/login']);
+    } catch (err: any) {
+      alert('❌ ' + err.message);
+    }
   }
 }

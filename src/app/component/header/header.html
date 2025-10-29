@@ -2,7 +2,7 @@
 
 <div class="header-section text-center">
   <div class="header-container">
-    <h1 class="header-title">Welcome Back, User 💜</h1>
+    <h1 class="header-title">Welcome Back, {{user.name}} 💜</h1>
     <div class="divider"></div>
     <p class="header-text">
       Recovery is more than safety — it’s healing. Explore tools to support your emotional well-being and rediscover your strength.
@@ -19,24 +19,23 @@
     <div class="col-md-4">
       <div class="feature-card p-4 shadow-sm">
         <h3>Create a Post</h3>
-        <a class="btn btn-outline-light mt-3 px-4" [routerLink]="'/createpost'">Create</a>
+        <a class="btn btn-outline-light mt-3 px-4"  [routerLink]="'/createpost'">Create</a>
       </div>
     </div>
 
     <div class="col-md-4">
+      <div class="feature-card p-4 shadow-sm">
+        <h3>My Posts</h3>
+        <a class="btn btn-outline-light mt-3 px-4" [routerLink]="'/myposts'">View</a>
+      </div>
+    </div>
+
+  <div class="col-md-4">
       <div class="feature-card p-4 shadow-sm">
         <h3>Events</h3>
         <a class="btn btn-outline-light mt-3 px-4" [routerLink]="'/events'">View</a>
       </div>
     </div>
-
-    <div class="col-md-4">
-      <div class="feature-card p-4 shadow-sm">
-        <h3>Progress</h3>
-        <a class="btn btn-outline-light mt-3 px-4" [routerLink]="'/progress'">progress</a>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="container text-center py-5">
@@ -64,81 +63,85 @@
   </div>
 </div>
 
-<div class="container text-center py-5">
+<div *ngIf="user" class="container text-center py-5">
   <div class="row g-4">
     <div class="col-md-4">
-      <div class="feature-card">
+      <div class="feature-card p-4 shadow rounded-4">
         <h3>💌 Users Joined</h3>
-        <p class="lead">1,254</p>
+        <p class="lead">{{ homeData?.usersJoined || 0 }}</p>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="feature-card">
+      <div class="feature-card p-4 shadow rounded-4">
         <h3>📅 Events Hosted</h3>
-        <p class="lead">42</p>
+        <p class="lead">{{ homeData?.eventsHosted || 0 }}</p>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="feature-card">
+      <div class="feature-card p-4 shadow rounded-4">
         <h3>📝 Posts Created</h3>
-        <p class="lead">3,512</p>
+        <p class="lead">{{ homeData?.posts?.length || 0 }}</p>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container bg">
-  <hr>
-  <h1 class="text-center">Content Forum</h1>
-  <div class="row g-4 justify-content-center">
-    
-    <div class="col-md-4">
-      <div class="card">
-        <img src="beach.jpg" class="card-img-top" alt="Post Image">
-        <div class="card-body">
-          <h5 class="card-title">User123</h5>
-          <p class="card-text">A day in my life</p>
-          <div class="post-actions mt-3">
-            <button class="like-button"><span class="material-icons">❤</span></button>
-            <span class="like-count">0</span>
-            <button class="comment-button"><span class="material-icons">🗨</span></button>
-            <span class="comment-count">0</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="card">
-        <img src="beach.jpg" class="card-img-top" alt="Post Image">
-        <div class="card-body">
-          <h5 class="card-title">User456</h5>
-          <p class="card-text">My weekend getaway</p>
-          <div class="post-actions mt-3">
-            <button class="like-button"><span class="material-icons">❤</span></button>
-            <span class="like-count">0</span>
-            <button class="comment-button"><span class="material-icons">🗨</span></button>
-            <span class="comment-count">0</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="card">
-        <img src="beach.jpg" class="card-img-top" alt="Post Image">
-        <div class="card-body">
-          <h5 class="card-title">User789</h5>
-          <p class="card-text">Tips for mindfulness</p>
-          <div class="post-actions mt-3">
-            <button class="like-button"><span class="material-icons">❤</span></button>
-            <span class="like-count">0</span>
-            <button class="comment-button"><span class="material-icons">🗨</span></button>
-            <span class="comment-count">0</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
+<div class="forum-container py-5">
+  <h1 class="forum-title text-center mb-5">🌸 Content Forum</h1>
+
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-4" *ngFor="let post of homeData.posts; let i = index">
+      <div class="forum-card shadow-sm">
+
+        <!-- User Info -->
+        <div class="user-info d-flex align-items-center mb-3">
+          <img src="assets/default-avatar.png" alt="User Avatar" class="avatar">
+          <div>
+            <h5 class="user-name mb-0">{{ post.name }}</h5>
+            <small class="text-muted">@{{ post.surname }}</small>
+          </div>
+        </div>
+
+        <!-- Post Content -->
+        <p class="post-text">{{ post.text }}</p>
+
+        <!-- Post Image -->
+        <img *ngIf="post.image" [src]="post.image" alt="Post Image" class="post-img">
+
+        <!-- Actions -->
+        <div class="post-actions mt-3 d-flex justify-content-between align-items-center">
+          <div class="action">
+            <button (click)="likePost(i)" [class.liked]="post.liked">❤️</button>
+            <span class="like-count">{{ post.likes || 0 }}</span>
+          </div>
+
+          <div class="action">
+            <button (click)="toggleCommentInput(i)">💬</button>
+            <span class="comment-count">{{ post.comments?.length || 0 }}</span>
+          </div>
+        </div>
+
+        <!-- Comment Input -->
+        <div *ngIf="post.showComment" class="mt-2">
+          <input type="text" class="form-control comment-input" placeholder="Write a comment..." [(ngModel)]="post.newComment">
+          <button class="btn btn-sm btn-post mt-1" (click)="addComment(i)">Post Comment</button>
+        </div>
+
+        <!-- Display Comments -->
+        <div *ngIf="post.comments?.length" class="mt-3">
+          <div *ngFor="let c of post.comments" class="comment-card">
+            <strong>{{ c.user }}:</strong> {{ c.text }}
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>
+
+
+
+<div class="text-center py-3">
+  <button class="btn btn-danger" (click)="logout()">Logout</button>
 </div>

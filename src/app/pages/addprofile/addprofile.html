@@ -29,14 +29,14 @@
 
     <div class="profile-preview">
       <h2>Visible Profiles</h2>
-      <div class="profile-card">
-        <h3>Jane Doe</h3>
-        <p>janedoe@gmail.com</p>
-        <div class="profile-options">
-          <button>Edit</button>
-          <button><a class="nav-link" routerLink="/edit">Delete</a></button>
+        <div class="profile-card" *ngFor="let user of users">
+          <h3>{{ user.name }} {{ user.surname }}</h3>
+          <p>{{ user.email }}</p>
+            <div class="profile-options">
+              <button (click)="editProfile(user)">Edit</button>
+              <button (click)="deleteProfile(user.email)">Delete</button>
+            </div>
         </div>
-      </div>
     </div>
   </div>
 </section>
