@@ -11,31 +11,38 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './createpost.html',
   styleUrls: ['./createpost.css']
 })
+
 export class CreatepostComponent {
+  // Get the text area
   @ViewChild('postContent') postContent!: ElementRef<HTMLTextAreaElement>;
+
+  // Variables for images and user data
   imageFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
   userData: any;
   errorMsg = '';
 
   constructor(private auth: AuthService, private router: Router) {
-    // Fetch current user from AuthService
+    // Get the current logged-in user
     this.userData = this.auth.getCurrentUser();
+
+    // Redirect to login if user is not logged in
     if (!this.userData) {
       this.router.navigate(['/login'], { replaceUrl: true });
     }
 
-    // Initialize homeData if missing
     if (!this.userData.homeData) {
       this.userData.homeData = { usersJoined: 0, eventsHosted: 0, posts: [] };
       this.auth.updateCurrentUserHomeData(this.userData.homeData);
     }
   }
 
+  // Handle image file selection
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (!file) return;
 
+    // Validate file type
     const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
     if (!validTypes.includes(file.type)) {
       this.errorMsg = 'Only JPEG, PNG, or WEBP images are allowed.';
@@ -43,12 +50,14 @@ export class CreatepostComponent {
       return;
     }
 
+    // Validate file size
     if (file.size > 3 * 1024 * 1024) {
       this.errorMsg = 'Image must be smaller than 3MB.';
       this.resetImage();
       return;
     }
 
+    // Clear errors and show image preview
     this.errorMsg = '';
     this.imageFile = file;
 
@@ -57,36 +66,50 @@ export class CreatepostComponent {
     reader.readAsDataURL(file);
   }
 
+  // Reset image data and preview
   resetImage() {
     this.imageFile = null;
     this.imagePreview = null;
   }
 
+  // Create and save new post
   createPost(event: Event) {
-  event.preventDefault();
-  this.errorMsg = '';
+    event.preventDefault();
+    this.errorMsg = '';
 
-  const content = this.postContent.nativeElement.value.trim();
-  if (!content) { this.errorMsg = 'Post content cannot be empty!'; return; }
+    // Validate text input
+    const content = this.postContent.nativeElement.value.trim();
+    if (!content) {
+      this.errorMsg = 'Post content cannot be empty!';
+      return;
+    }
 
-  if (!this.userData) { this.errorMsg = 'You must be logged in to post.'; return; }
+    // Ensure user is logged in
+    if (!this.userData) {
+      this.errorMsg = 'You must be logged in to post.';
+      return;
+    }
 
-  const newPost = {
-    content,
-    image: this.imagePreview || null,
-    createdAt: new Date(),
-    name: this.userData.name || 'Anonymous',
-    surname: this.userData.surname || ''
-  };
+    // Create the new post
+    const newPost = {
+      content,
+      image: this.imagePreview || null,
+      createdAt: new Date(),
+      name: this.userData.name || 'Anonymous',
+      surname: this.userData.surname || ''
+    };
 
-  // Add post to user homeData
-  this.userData.homeData.posts.push(newPost);
-  this.auth.updateCurrentUserHomeData(this.userData.homeData); // triggers updates
+    // Save post to user pprofile
+    this.userData.homeData.posts.push(newPost);
+    this.auth.updateCurrentUserHomeData(this.userData.homeData);
 
-  this.postContent.nativeElement.value = '';
-  this.resetImage();
+    // Clear input box
+    this.postContent.nativeElement.value = '';
+    this.resetImage();
 
-  alert('Post shared successfully 💖');
-  this.router.navigate(['/profile'], { replaceUrl: true });
+    // Show success message and redirect to profile page
+    alert('Post shared successfully 💖');
+    this.router.navigate(['/profile'], { replaceUrl: true });
+  }
 }
-}
+

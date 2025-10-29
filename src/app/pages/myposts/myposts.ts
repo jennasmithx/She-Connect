@@ -14,6 +14,7 @@ export class MypostsComponent implements OnInit {
 
   constructor(private auth: AuthService) {}
 
+  // Show User Posts
   ngOnInit() {
     this.auth.currentUser$.subscribe(user => {
       if (user && user.homeData) {

@@ -43,6 +43,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  // Upload File For Post
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (!file) return;
@@ -73,6 +74,7 @@ export class ProfileComponent implements OnInit {
     this.imagePreview = null;
   }
 
+  // Create Post
   createPost(event: Event) {
     event.preventDefault();
     this.errorMsg = '';
@@ -96,7 +98,7 @@ export class ProfileComponent implements OnInit {
       surname: this.userData.surname || ''
     };
 
-    // Push to userData homeData posts
+    // Push to posts
     this.userData.homeData.posts.push(newPost);
     this.auth.updateCurrentUserHomeData(this.userData.homeData); // reactive update
 

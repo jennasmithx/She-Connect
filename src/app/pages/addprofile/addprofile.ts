@@ -37,6 +37,7 @@ export class AddprofileComponent implements OnInit {
     this.users = JSON.parse(localStorage.getItem('users') || '[]');
   }
 
+  // Add a profile
   addProfile() {
     if (!this.firstName || !this.lastName || !this.email || !this.password) {
       this.errorMsg = 'All fields are required!';
@@ -51,8 +52,9 @@ export class AddprofileComponent implements OnInit {
       homeData: { usersJoined: 0, eventsHosted: 0, posts: [] }
     };
 
+    // Authorise
     try {
-      this.auth.addProfile(newUser); // Make sure your AuthService.addProfile accepts homeData
+      this.auth.addProfile(newUser);
       alert('✅ Profile added!');
       // Reset form
       this.firstName = '';
@@ -68,10 +70,11 @@ export class AddprofileComponent implements OnInit {
   }
 
   editProfile(user: User) {
-    // For simplicity, redirect to your Edit page (implement EditComponent separately)
+    // Redirect to Edit page
     this.router.navigate(['/edit'], { state: { user } });
   }
 
+  // Delete Profile
   deleteProfile(email: string) {
     if (!confirm('Are you sure you want to delete this profile?')) return;
     const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');

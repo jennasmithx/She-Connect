@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Findmentor } from './findmentor';
+import { FindmentorComponent } from './findmentor';
 
 describe('Findmentor', () => {
-  let component: Findmentor;
-  let fixture: ComponentFixture<Findmentor>;
+  let component: FindmentorComponent;
+  let fixture: ComponentFixture<FindmentorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Findmentor]
+      imports: [FindmentorComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Findmentor);
+    fixture = TestBed.createComponent(FindmentorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

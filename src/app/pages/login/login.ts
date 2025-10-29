@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
+  // Authorise Login
   onLogin(emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
     if (this.auth.login(emailInput.value, passwordInput.value)) {
       alert('✅ Login successful!');

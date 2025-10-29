@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Joinprogram } from './joinprogram';
+import { JoinprogramComponent } from './joinprogram';
 
 describe('Joinprogram', () => {
-  let component: Joinprogram;
-  let fixture: ComponentFixture<Joinprogram>;
+  let component: JoinprogramComponent;
+  let fixture: ComponentFixture<JoinprogramComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Joinprogram]
+      imports: [JoinprogramComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Joinprogram);
+    fixture = TestBed.createComponent(JoinprogramComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

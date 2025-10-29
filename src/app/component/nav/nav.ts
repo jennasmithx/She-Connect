@@ -16,7 +16,7 @@ export class NavComponent {
   logout() {
   this.auth.logout();
 
-  // Redirect to login and prevent back button
+  // Redirect to login
   this.router.navigate(['/login'], { replaceUrl: true });
 }
 

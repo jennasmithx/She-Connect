@@ -1,7 +1,9 @@
+<!-- User Posts -->
 <div class="posts-container py-5">
   <h2 class="mb-4 text-center">📝 My Posts</h2>
   <div *ngIf="posts.length === 0" class="no-posts">No posts yet!</div>
   
+<!-- Displays User Posts-->
   <div class="posts-row">
     <div class="card-post" *ngFor="let post of posts">
       <p>{{ post.content }}</p>
