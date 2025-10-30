@@ -109,7 +109,7 @@ export class CreatepostComponent {
 
     // Show success message and redirect to profile page
     alert('Post shared successfully 💖');
-    this.router.navigate(['/profile'], { replaceUrl: true });
+    this.router.navigate(['/'], { replaceUrl: true });
   }
 }
 

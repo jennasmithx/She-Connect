@@ -1,6 +1,8 @@
-.create-post {
-  background: #fff0f5;
+.createpost-container {
+  background:#fff3f8;
+  margin: 0 auto;
   min-height: 100vh;
+  padding: 15cm;
 }
 
 .post-card {
@@ -29,15 +31,15 @@
 }
 
 .btn-post {
-  background: linear-gradient(to right, #ff9ac1, #ff77b5);
+  background:rgb(255, 197, 219);
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   border-radius: 10px;
   transition: all 0.2s ease;
 }
 
 .btn-post:hover {
-  background: linear-gradient(to right, #ff82b5, #ff6fa0);
+  background: rgb(255, 186, 213);
 }
 
 .preview img {
@@ -87,3 +89,12 @@
   background-color: #ffb6cc;
   color: #fff;
 }
+
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #d67fa1;
+}
+

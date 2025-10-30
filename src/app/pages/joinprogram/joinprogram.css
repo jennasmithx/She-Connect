@@ -1,8 +1,8 @@
-.programs-section {
-  background: linear-gradient(145deg, #ffe3ec, #fff0f5);
-  padding: 80px 20px;
-  text-align: center;
-  color: #3e3050;
+.joinprogram-container {
+  background:#fff3f8;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 10cm;
 }
 
 .program-cards {
@@ -14,7 +14,7 @@
 }
 
 .program-card {
-  background: #fff0f5;
+  background: #ffe1ea;
   border-radius: 20px;
   padding: 2rem 1.5rem;
   width: 250px;
@@ -47,3 +47,12 @@
   background-color: #ffb6cc;
   color: #fff;
 }
+
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #d67fa1;
+}
+

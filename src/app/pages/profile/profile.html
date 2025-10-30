@@ -2,27 +2,70 @@
 <div class="profile-container py-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
+        <h1 class="mb-4 mt-5 text-center">💮 My Profile 💮</h1>
       <div class="post-card p-4 rounded-4 shadow-sm">
 
         <!-- User Profile -->
         <div class="d-flex align-items-center mb-4">
-          <img src="assets/default-avatar.png" alt="Profile" class="profile-img me-3">
-          <div>
-            <h5 class="mb-0 fw-bold text-dark">{{ userData?.name || 'User' }}</h5>
-            <small class="text-muted">@{{ userData?.surname || 'username' }}</small>
+          <div class="text-center me-3">
+            <img 
+              [src]="userData?.avatar || 'assets/default-avatar.png'" 
+              alt="Profile" 
+              class="profile-img rounded-circle shadow-sm mb-2" 
+              style="width: 100px; height: 100px; object-fit: cover;">
+
           </div>
+
+          <div>
+            <h5 class="mb-0 fw-bold text-dark">{{ userData?.name }} {{ userData?.surname }}</h5>
+            <small class="text-muted">@{{ userData?.surname?.toLowerCase() || 'username' }}</small>
+            
+            <!-- Bio -->
+            <p class="mt-1 mb-0 text-muted" style="font-size: 0.9rem;">
+              {{ userData?.bio || 'No bio yet...' }}
+            </p>
+
+            <!-- Location -->
+            <p class="mt-1 mb-0 text-muted" style="font-size: 0.9rem;">
+              📍 {{ userData?.location || 'Add location...' }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Bio Section -->
+        <div class="bio-box mb-4">
+          <h4 class="fw-bold">Bio 📝</h4>
+          <textarea #bioInput class="form-control post-input" rows="4" placeholder="Write something about yourself">{{ userData?.bio || '' }}</textarea>
+          
+          <button class="btn mt-3 w-100" (click)="saveBio(bioInput.value)">
+            Save Bio
+          </button>
+        </div><br>
+
+        <!-- Location Section -->
+        <div class="mt-3">
+          <h4 class="fw-bold">Location 📍</h4>
+          <textarea #locationInput class="form-control post-input" rows="4" placeholder="Enter your location"></textarea>
+          <button class="btn btn-primary w-100 mt-3 mb-3" (click)="saveLocation(locationInput.value)">
+            Save Location
+          </button>
+        </div>    
+        
+        <!-- Profile Image Upload -->
+        <div class="mb-3 mt-3">
+          <h4 class="fw-bold mt-5 mb-2">Change Profile Photo 👤</h4>
+
+          <input type="file" accept="image/*" (change)="onAvatarSelected($event)" class="form-control mt-2">
+          <button class="btn btn-primary w-100 mt-3 mb-3" (click)="saveAvatar()">
+            Save Profile Photo
+          </button>
         </div>
 
         <!-- Post Input -->
         <form (submit)="createPost($event)">
+          <h4 class="fw-bold mt-5">Create Post 💮</h4>
           <div class="mb-3">
-            <textarea
-              #postContent
-              class="form-control post-input"
-              rows="4"
-              placeholder="What's on your mind?"
-              required>
-            </textarea>
+            <textarea #postContent class="form-control post-input" rows="4" placeholder="What's on your mind?" required></textarea>
           </div>
 
           <!-- Image Upload -->
@@ -41,17 +84,19 @@
           </div>
 
           <!-- Post Button -->
-          <button type="submit" class="btn btn-post w-100 py-2 fw-bold">Share Post</button>
+          <button type="submit" class="btn btn-post w-100 py-2">Share Post</button>
         </form>
       </div>
     </div>
   </div>
 
-  <h2 class="mb-4 mt-5 text-center">📝 My Posts</h2>
+  <div class="profile-container py-5">
+  <div class="row justify-content-center">
+  <h2 class="mb-4 mt-5 text-center">📝 My Posts 📝</h2>
   <div *ngIf="posts.length === 0" class="text-center text-muted">No posts yet!</div>
   
   <div class="row g-4">
-    <div class="col-md-6" *ngFor="let post of posts">
+    <div class="col-md-4" *ngFor="let post of posts">
       <div class="card p-3 shadow-sm">
         <p>{{ post.content }}</p>
         <img *ngIf="post.image" [src]="post.image" class="img-fluid rounded" alt="Post image">
@@ -59,4 +104,6 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>

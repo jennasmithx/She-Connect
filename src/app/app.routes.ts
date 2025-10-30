@@ -3,7 +3,6 @@ import { HomeComponent } from './pages/home/home';
 import { RegisterComponent } from './pages/register/register';
 import { LoginComponent } from './pages/login/login';
 import { AboutComponent } from './pages/about/about';
-import { AddprofileComponent } from './pages/addprofile/addprofile';
 import { SettingsComponent } from './pages/settings/settings';
 import { ResourcesComponent } from './pages/resources/resources';
 import { EventsComponent } from './pages/events/events';
@@ -13,6 +12,10 @@ import { JoinprogramComponent } from './pages/joinprogram/joinprogram';
 import { ProfileComponent } from './pages/profile/profile';
 import { MypostsComponent } from './pages/myposts/myposts';
 import { ChatComponent } from './pages/chat/chat';
+import { AdminComponent } from './pages/admin/admin';
+import { EditUsersComponent } from './pages/edit/edit';
+import { MentorComponent } from './pages/mentor/mentor';
+import { ReportComponent } from './pages/report/report';
 
 export const routes: Routes = [
 
@@ -35,11 +38,6 @@ export const routes: Routes = [
         path: 'about',
         component: AboutComponent
     },
-
-    {
-    path: 'addprofile',
-        component: AddprofileComponent
-    }, 
 
     {
     path: 'settings',
@@ -81,8 +79,30 @@ export const routes: Routes = [
         component: MypostsComponent
     },
 
-    { path: 'chat', component: ChatComponent }
+    { 
+        path: 'chat', 
+        component: ChatComponent 
+    },
 
+    {
+        path: 'admin',
+        component: AdminComponent
+    },
+    {
+        path: 'admin/edit-users',
+        component: EditUsersComponent
+    },
+
+     { path: 'mentor', loadComponent: () => import('./pages/mentor/mentor').then(m => m.MentorComponent) 
+
+     },
+
+
+    {
+        path: 'report',
+        component: ReportComponent
+    }
+    
 ];
 
 

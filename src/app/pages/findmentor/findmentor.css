@@ -1,8 +1,8 @@
-.mentors-section {
-  background: linear-gradient(135deg, #ffe3ec, #fff0f5);
-  padding: 80px 20px;
-  color: #3e3050;
-  text-align: center;
+.mentor-container {
+  background:#fff3f8;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 15cm;
 }
 
 .mentor-cards {
@@ -14,7 +14,7 @@
 }
 
 .mentor-card {
-  background: #fff0f5;
+  background: #ffe1ea;
   border-radius: 20px;
   padding: 1.5rem;
   width: 220px;
@@ -30,21 +30,6 @@
   margin-bottom: 1rem;
 }
 
-.mentor-card button {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 20px;
-  background: #d67fa1;
-  color: #fff;
-  cursor: pointer;
-  margin-top: 0.8rem;
-  transition: all 0.3s ease;
-}
-
-.mentor-card button:hover {
-  background: #a75b85;
-}
-
 .btn {
   background-color: #ffd6e0;
   color: #3e3050;
@@ -57,4 +42,21 @@
   background-color: #ffb6cc;
   color: #fff;
 }
+
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #d67fa1;
+}
+
+.about-title2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #d67fa1;
+}
+
+
 

@@ -20,4 +20,7 @@ export class NavComponent {
   this.router.navigate(['/login'], { replaceUrl: true });
 }
 
+sendEmergency() {
+    alert('🚨 Emergency sent!');
+}
 }

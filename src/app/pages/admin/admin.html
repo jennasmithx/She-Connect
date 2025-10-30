@@ -1,0 +1,38 @@
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="header-container">
+    <h1 class="header-title">💜 Welcome Back, Admin 💜</h1>
+    <div class="divider"></div>
+    <p class="header-text">
+      Recovery is more than safety — it’s healing. Explore tools to support your emotional well-being and rediscover your strength.
+    </p>
+    <blockquote class="daily-quote">
+      “Every day is a new beginning. Take a deep breath, smile, and start again.”
+    </blockquote>
+  </div>
+</div>
+
+<!-- Site Info -->
+<div class="container text-center py-5">
+  <div class="row g-4">
+    <div class="col">
+      <h1 class="about-title text-center">👑 Admin Dashboard 👑</h1>
+        <h2>Total registered users: </h2>
+        <h2>{{ totalUsers }}</h2>
+        <ul>
+        <li *ngFor="let user of allUsers">
+            {{ user.name }} {{ user.surname }} - {{ user.email }} - Role: {{ user.role }}
+        </li>
+        </ul>
+    </div>
+
+    <div>
+        <button (click)="goToEditUsers()" class="btn btn-primary mb-3">Edit Users</button>
+    </div>
+
+<app-graphs></app-graphs>
+
+  </div>
+</div>
+
+

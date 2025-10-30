@@ -1,0 +1,71 @@
+<div class="edit-container">
+  <h1 class="about-title text-center mb-5">Edit Users</h1>
+
+  <!-- Headings -->
+  <div class="user-card mb-3">
+    <div class="user-info">
+        <p class="fs-5"><strong>Name & Surname</strong></p>
+        <p class="fs-5"><strong>Email</strong></p>
+        <p class="fs-5"><strong>Role</strong></p>
+    </div>
+    <div class="button-group">
+        <p class="fs-5"><strong>Edit | Delete</strong></p>
+    </div>
+  </div>
+
+  <!-- User 1 -->
+  <div class="user-card mb-3">
+    <div class="user-info">
+        <p><strong>{{ users[0].name }} {{ users[0].surname }}</strong></p>
+        <p> {{ users[0].email }} </p>
+        <p> {{ users[0].role }} </p>
+    </div>
+    <div class="button-group">
+        <button class="btn btn-warning btn-sm me-2" (click)="editUser(0)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(0)">Delete</button>
+    </div>
+  </div>
+
+  <!-- User 2 -->
+  <div class="user-card mb-3">
+    <div class="user-info">
+        <p><strong>{{ users[1].name }} {{ users[1].surname }}</strong></p>
+        <p> {{ users[1].email }} </p>
+        <p> {{ users[1].role }} </p>
+    </div>
+    <div class="button-group">
+        <button class="btn btn-warning btn-sm me-2" (click)="editUser(1)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(1)">Delete</button>
+    </div>
+  </div>
+
+  <!-- User 3 -->
+  <div class="user-card mb-3">
+    <div class="user-info">
+        <p><strong>{{ users[2].name }} {{ users[2].surname }}</strong></p>
+        <p> {{ users[2].email }} </p>
+        <p> {{ users[2].role }} </p>
+    </div>
+    <div class="button-group">
+        <button class="btn btn-warning btn-sm me-2" (click)="editUser(2)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(2)">Delete</button>
+    </div>
+  </div>
+
+  <!-- User 4 -->
+  <div class="user-card mb-3">
+    <div class="user-info">
+        <p><strong>{{ users[3].name }} {{ users[3].surname }}</strong></p>
+        <p> {{ users[3].email }} </p>
+        <p> {{ users[3].role }} </p>
+    </div>
+    <div class="button-group">
+        <button class="btn btn-warning btn-sm me-2" (click)="editUser(3)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(3)">Delete</button>
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    <button class="btn btn-secondary mt-3" routerLink="/admin">Back to Dashboard</button>
+  </div>
+</div>

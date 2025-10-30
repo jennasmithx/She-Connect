@@ -1,8 +1,10 @@
 <!-- Create Posts -->
-<div class="create-post container py-5">
+<div class="createpost-container py-5">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-8">
+          <h1 class="about-title text-center mb-4">Create Post</h1>
       <div class="post-card p-4 rounded-4 shadow-sm">
+
 
         <!-- User Profile -->
         <div class="d-flex align-items-center mb-4">
@@ -16,13 +18,7 @@
         <!-- Post Input -->
         <form (submit)="createPost($event)">
           <div class="mb-3">
-            <textarea
-              #postContent
-              class="form-control post-input"
-              rows="4"
-              placeholder="What's on your mind?"
-              required>
-            </textarea>
+            <textarea #postContent class="form-control post-input" rows="4" placeholder="What's on your mind?" required></textarea>
           </div>
 
           <!-- Image Upload -->
@@ -41,7 +37,7 @@
           </div>
 
           <!-- Post Button -->
-          <button type="submit" class="btn btn-post w-100 py-2 fw-bold">Share Post</button>
+          <button type="submit" class="btn btn-post w-100 py-2">Share Post</button>
         </form>
       </div>
     </div>

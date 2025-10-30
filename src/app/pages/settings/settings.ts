@@ -29,15 +29,28 @@ export class SettingsComponent {
 
   // Update Profile
   updateProfile() {
-    if (!this.user.name || !this.user.surname) {
-      this.message = 'Name and surname cannot be empty.';
-      return;
-    }
-
-    this.auth.updateCurrentUserHomeData(this.user.homeData);
-    localStorage.setItem('currentUser', JSON.stringify(this.user));
-    this.message = 'Profile updated successfully ✅';
+  if (!this.user.name || !this.user.surname) {
+    this.message = 'Name and surname cannot be empty.';
+    return;
   }
+
+  // Update the main users array
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+  const idx = users.findIndex((u: any) => u.email === this.user.email);
+  if (idx !== -1) {
+    users[idx].name = this.user.name;
+    users[idx].surname = this.user.surname;
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+
+  // Update current session
+  localStorage.setItem('currentUser', JSON.stringify(this.user));
+
+  // Optionally update homeData if needed
+  this.auth.updateCurrentUserHomeData(this.user.homeData);
+
+  this.message = 'Profile updated successfully ✅';
+}
 
   // Change Password
   changePassword() {

@@ -1,0 +1,51 @@
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="header-container">
+    <h1 class="header-title">💜 Welcome Back, Mentor 💜</h1>
+    <div class="divider"></div>
+    <p class="header-text">
+      Recovery is more than safety — it’s healing. Explore tools to support your emotional well-being and rediscover your strength.
+    </p>
+    <blockquote class="daily-quote">
+      “Every day is a new beginning. Take a deep breath, smile, and start again.”
+    </blockquote>
+  </div>
+</div>
+
+<div class="mentor-dashboard">
+  <h2 class="about-title text-center mb-5">Mentor Requests</h2>
+
+  <div class="request-card">
+    <span>John Doe sent you a message request</span>
+    <button class="reply-btn" (click)="openChat('John Doe')">Reply</button>
+  </div>
+
+  <div class="request-card">
+    <span>Sarah Jade sent you a message request</span>
+    <button class="reply-btn" (click)="openChat('Sarah Jade')">Reply</button>
+  </div>
+
+  <div class="request-card mb-5">
+    <span>Emma Watson sent you a message request</span>
+    <button class="reply-btn" (click)="openChat('Emma Watson')">Reply</button>
+  </div>
+
+  <div *ngIf="activeChat" class="chat-container">
+  <h3>Chat with {{ activeChat }}</h3>
+
+  <div class="chat-box mt-5">
+    <div class="chat-message bot">{{ chatMessage }}</div>
+  </div>
+
+  <div class="chat-input">
+    <input #msgBox type="text" placeholder="Type your message..." />
+    <button (click)="sendMessage(msgBox)">Send</button>
+  </div>
+</div>
+</div>
+
+
+
+
+
+

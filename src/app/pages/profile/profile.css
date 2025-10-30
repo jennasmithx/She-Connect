@@ -1,22 +1,15 @@
 /* Profile Page */
 .profile-container {
-  background: linear-gradient(135deg, #fff0f5, #ffe3ec);
+  background:#fff3f8;
   min-height: 100vh;
-  padding: 60px 20px;
+  padding: 60px 100px;
 }
 
 /* Create Post Card */
 .post-card {
-  background: linear-gradient(145deg, #ffe3ec, #fff0f5);
+  background: #ffe1ea;
   border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(198, 128, 180, 0.15);
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(198, 128, 180, 0.25);
+  box-shadow: 0px 4px 15px rgba(255, 175, 202, 0.8);
 }
 
 /* User Profile in Post */
@@ -25,7 +18,7 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #d67fa1;
+  border: 2px solid #e4a1bb;
 }
 
 .post-card h5 {
@@ -41,7 +34,7 @@
 /* Post Input */
 .post-input {
   border-radius: 12px;
-  border: 1.5px solid #ffbcd3;
+  border: 1.5px solid #ffd9e6;
   resize: none;
   transition: all 0.3s ease;
   width: 100%;
@@ -61,15 +54,28 @@
 
 /* Share Button */
 .btn-post {
-  background: linear-gradient(to right, #ff9ac1, #ff77b5);
+  background:rgb(255, 197, 219);
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   border-radius: 10px;
   transition: all 0.2s ease;
 }
 
 .btn-post:hover {
-  background: linear-gradient(to right, #ff82b5, #ff6fa0);
+  background: rgb(255, 186, 213);
+}
+
+/* Save Bio Button */
+.btn {
+  background:rgb(255, 197, 219);
+  border: none;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: rgb(255, 186, 213);
 }
 
 /* My Posts Section */
@@ -81,23 +87,31 @@ h2.text-center {
   margin-bottom: 2rem;
 }
 
+h1.text-center {
+  font-family: 'Playfair Display', serif;
+  color: #d67fa1;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
 .text-muted {
-  color: #a37edc !important;
+  color: #000000 !important;
   opacity: 0.7 !important;
 }
 
 /* Posts Cards */
 .row.g-4 .card {
-  background: linear-gradient(145deg, #ffe3ec, #fff0f5);
+  background: #ffd8e4;
   border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(198, 128, 180, 0.15);
-  padding: 1.5rem;
+  box-shadow: 0px 4px 15px rgba(255, 175, 202, 0.8);
+  padding: 2rem;
   transition: all 0.3s ease;
 }
 
 .row.g-4 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(198, 128, 180, 0.25);
+  box-shadow: 10px 10px 25px rgba(255, 153, 192, 0.801);
 }
 
 .row.g-4 .card p {
@@ -113,7 +127,7 @@ h2.text-center {
 }
 
 .row.g-4 .card small {
-  color: #a37edc;
+  color: #000000;
   opacity: 0.8;
   display: block;
   font-size: 0.85rem;

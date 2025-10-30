@@ -1,0 +1,13 @@
+
+<div class="report-container text-center py-5" style="background:#fff3f8; min-height: 100vh;">
+  <h2 class="about-title">Report an Issue</h2>
+  <div class="divider"></div>
+  <p class="about-text">Send us a report and we will look into it as soon as possible.</p>
+
+ 
+  <textarea #reportBox placeholder="Type your message here" class="report-textarea"></textarea>
+  <br><br>
+  <textarea #reportBox placeholder="What is your location?" class="report-textarea"></textarea>
+  <br><br>
+  <button class="btn btn-primary" (click)="sendReport(reportBox.value)">Send Report</button>
+</div>

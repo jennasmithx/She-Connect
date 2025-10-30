@@ -12,10 +12,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
   @ViewChild('postContent') postContent!: ElementRef<HTMLTextAreaElement>;
+
   userData: any;
   posts: any[] = [];
   imageFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
+  avatarFile: File | null = null;
+  avatarPreview: string | ArrayBuffer | null = null;
   errorMsg = '';
 
   constructor(private auth: AuthService, private router: Router) {}
@@ -28,22 +31,19 @@ export class ProfileComponent implements OnInit {
     }
     this.userData = user;
 
-    // Initialize homeData if missing
     if (!this.userData.homeData) {
       this.userData.homeData = { usersJoined: 0, eventsHosted: 0, posts: [] };
       this.auth.updateCurrentUserHomeData(this.userData.homeData);
     }
 
-    // Load posts reactively
     this.auth.currentUser$.subscribe(u => {
       if (u && u.homeData) {
         this.posts = u.homeData.posts;
-        this.userData = u; // keep latest user info
+        this.userData = u;
       }
     });
   }
 
-  // Upload File For Post
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (!file) return;
@@ -74,21 +74,10 @@ export class ProfileComponent implements OnInit {
     this.imagePreview = null;
   }
 
-  // Create Post
   createPost(event: Event) {
     event.preventDefault();
-    this.errorMsg = '';
-
     const content = this.postContent.nativeElement.value.trim();
-    if (!content) {
-      this.errorMsg = 'Post content cannot be empty!';
-      return;
-    }
-
-    if (!this.userData) {
-      this.errorMsg = 'You must be logged in to post.';
-      return;
-    }
+    if (!content) { alert('Post content cannot be empty!'); return; }
 
     const newPost = {
       content,
@@ -98,12 +87,57 @@ export class ProfileComponent implements OnInit {
       surname: this.userData.surname || ''
     };
 
-    // Push to posts
     this.userData.homeData.posts.push(newPost);
-    this.auth.updateCurrentUserHomeData(this.userData.homeData); // reactive update
+    this.auth.updateCurrentUserHomeData(this.userData.homeData);
 
-    // Reset form
     this.postContent.nativeElement.value = '';
     this.resetImage();
+  }
+
+  saveBio(bio: string) {
+    bio = bio.trim();
+    if (!bio) { alert("Bio can't be empty"); return; }
+
+    this.userData.bio = bio;
+    this.updateUserLocalStorage('bio', bio);
+    alert("Bio updated ✅");
+  }
+
+  saveLocation(location: string) {
+    location = location.trim();
+    if (!location) { alert("Location can't be empty"); return; }
+
+    this.userData.location = location;
+    this.updateUserLocalStorage('location', location);
+    alert("Location updated ✅");
+  }
+
+  onAvatarSelected(event: any) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+    if (!validTypes.includes(file.type)) { alert('Only JPEG, PNG, or WEBP allowed.'); return; }
+    if (file.size > 3 * 1024 * 1024) { alert('Image must be smaller than 3MB.'); return; }
+
+    this.avatarFile = file;
+    const reader = new FileReader();
+    reader.onload = e => (this.avatarPreview = (e.target as FileReader).result);
+    reader.readAsDataURL(file);
+  }
+
+  saveAvatar() {
+    if (!this.avatarPreview) { alert("Select a photo first!"); return; }
+
+    this.userData.avatar = this.avatarPreview;
+    this.updateUserLocalStorage('avatar', this.avatarPreview);
+    alert('Profile photo updated ✅');
+  }
+
+  private updateUserLocalStorage(key: string, value: any) {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const idx = users.findIndex((u: any) => u.email === this.userData.email);
+    if (idx !== -1) { users[idx][key] = value; localStorage.setItem('users', JSON.stringify(users)); }
+    localStorage.setItem('currentUser', JSON.stringify(this.userData));
   }
 }

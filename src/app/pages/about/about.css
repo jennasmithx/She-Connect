@@ -1,14 +1,9 @@
 /* About Page */
-.about-section {
-  background: linear-gradient(135deg, #ffe3ec, #fff0f5);
-  padding: 100px 20px;
-  text-align: center;
-  color: #3e3050;
-}
-
 .about-container {
-  max-width: 900px;
+  background:#fff3f8;
   margin: 0 auto;
+  min-height: 100vh;
+  padding: 15cm;
 }
 
 .about-title {

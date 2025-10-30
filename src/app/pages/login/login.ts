@@ -11,11 +11,25 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
-  // Authorise Login
+  // Authorize Login
   onLogin(emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
-    if (this.auth.login(emailInput.value, passwordInput.value)) {
-      alert('✅ Login successful!');
-      this.router.navigate(['/']);
+    const success = this.auth.login(emailInput.value, passwordInput.value);
+
+    if (success) {
+      const user = this.auth.getCurrentUser();
+
+      if (user) {
+        // Redirect based on role/email
+        if (user.email === 'admin@gmail.com' && user.password === '55555') {
+          this.router.navigate(['/admin']);
+        } else if (user.email === 'mentor@gmail.com' && user.password === '55555') {
+          this.router.navigate(['/mentor']);
+        } else {
+          this.router.navigate(['/']); 
+        }
+
+        alert('✅ Login successful!');
+      }
     } else {
       alert('❌ Invalid email or password.');
     }
